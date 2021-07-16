@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Restaurent Name</title>
+	<div id="atags">
+		<a href="#">Home</a>
+	    <a href="#">About</a>
+	    <a href="#">Menu</a>
+	    <a href="#">Contact</a>
+	</div>
+</head>
+<body>
+	<style type="text/css">
+		#atags{
+			text-align: right;
+			background-color: black;
+			height: 40px;
+			padding-top: 15px;
+		}
+		a{
+			margin: 20px;
+			background-color: #000000;
+			text-decoration: none;
+			color: white;
+		}
+		a:hover {
+			background-color: gray;
+			font-weight: bold;
+		}
+		#home{
+			width: 400px;
+			height: 720px;
+			float: right;
+		}
+		.column{
+			float: left;
+		}
+		.row::after{
+			content: "";
+			clear: both;
+			display: table;
+		}
+		img{
+			border: 5px solid gray;
+		}
+		.column1 .button1{
+			position: absolute;
+			top: 50%;
+			left: 1%;
+			color: white;
+			background-color: black;
+			font-size: 40px;
+		}
+		.column1 .button2{
+			position: absolute;
+			top: 50%;
+			right: 1.6%;
+			color: white;
+			background-color: black;
+			font-size: 40px;
+		}
+		.column1 .button1:hover {
+			background-color: gray;
+		}
+		.column1 .button2:hover {
+			background-color: gray;
+		}
+		a:hover {
+			background-color: gray;
+		}
+		#slide{
+			width: 1500px;
+			height: 700px;
+		}
+		#content img{
+			position: absolute;
+			top: 10;
+			left: 2;
+		}
+		
+		.fadeinimg {
+			animation: fadein 2s;
+			width: 1500px;
+			height: 700px;
+
+		}
+		.number{
+			position: absolute;
+			top: 6%;
+			left: 1%;
+			color: #ffffffb5;
+		}
+		@keyframes fadein {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+
+
+	</style>
+	<div class="row">
+		<div class="column" id="content">
+			<img src="E:\New folder\res1.jpg" alt="rest" id="slide">	
+			<h2 class=number>1/5</h2>
+		</div>
+		<div class="column1">
+			<button class="button1" id="prev" onclick="prev()"><</button>
+			<button class="button2" id="next"  onclick="next()">></button>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var photos=['res1.jpg','res2.jpg','res3.jpg','res4.jpg','res5.jpg'];
+		var pageno=['1/5','2/5','3/5','4/5','5/5']
+		var currentimg=0;
+		var container=document.getElementById('content');
+		var nxtbtn=document.getElementById('next');
+		var prevbtn=document.getElementById('prev');
+
+		function next() {
+			currentimg++;
+			if(currentimg>(photos.length-1)){currentimg=0; }
+			var newslide=document.createElement('img');
+			newslide.src=`E:/New folder/${photos[currentimg]}`;
+			newslide.className='fadeinimg';
+			container.appendChild(newslide);
+			var newpage=document.createElement('h2');
+			newpage.className='number';
+			newpage.innerHTML=pageno[currentimg];
+			container.appendChild(newpage);
+
+		}
+		function prev(){
+			currentimg--;
+			if(currentimg<0){currentimg=photos.length-1};
+			var newslide=document.createElement('img');
+			newslide.src=`E:/New folder/${photos[currentimg]}`;
+			newslide.className='fadeinimg';
+			container.appendChild(newslide);
+			var newpage=document.createElement('h2');
+			newpage.className='number';
+			newpage.innerHTML=pageno[currentimg];
+			container.appendChild(newpage);
+
+		}
+	</script>
+	
+</body>
